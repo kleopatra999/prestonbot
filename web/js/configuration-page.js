@@ -29,7 +29,6 @@ Vue.component('list', {
             req.send();
         },
         updateSettings: function () {
-            console.log('toto');
             console.log(this.actions);
         }
     },

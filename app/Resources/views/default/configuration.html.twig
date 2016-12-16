@@ -15,6 +15,7 @@
 
 {% block javascripts %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.4/vue.js"></script>
+
     <script type="text/x-template" id="actionForm-template">
     {% verbatim %}
         <div>
@@ -23,13 +24,16 @@
         </div>
     {% endverbatim %}
     </script>
+
     <script type="text/x-template" id="list-template">
-        <div>
-            <form>
+    <div>
+        <form>
+            <div>
                 <action v-for="action in actions" v-bind:action="action"></action>
-                <button v-on:click="updateSettings">Save settings</button>
-            </form>
-        </div>
+            </div>
+        </form>
+         <button v-on:click="updateSettings">Update settings</button>
+    </div>
     </script>
     <script src="{{ asset('js/configuration-page.js') }}"></script>
 {% endblock %}
