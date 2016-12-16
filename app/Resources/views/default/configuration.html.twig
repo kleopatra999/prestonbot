@@ -5,10 +5,17 @@
         <div class="row">
             <h1>Configuration of features</h1>
 
-            {% for actionForm in forms %}
-                {% set actionBot = actionsBot[loop.index - 1] %}
-                <i>{{ actionBot.name }}</i>: {{ form_widget(actionForm) }}
-            {% endfor %}
+            <div id="app">
+                <actionsList
+                    v-bind:apiUrl="'{{ path('api_actions_all') }}'"
+                ></actionsList>
+            </div>
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.4/vue.js"></script>
+    <script src="{{ asset('js/vue-symfony-compat.js') }}"></script>
+    <script src="{{ asset('js/configuration-page.js') }}"></script>
 {% endblock %}

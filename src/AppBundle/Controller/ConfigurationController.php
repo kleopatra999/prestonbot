@@ -15,17 +15,6 @@ class ConfigurationController extends Controller
      */
     public function configureAction()
     {
-        $repository = $this->getDoctrine()->getRepository('AppBundle\Bot\BotAction');
-        $actionsBot = $repository->findAll();
-        $actionsForms = [];
-
-        foreach ($actionsBot as $actionBot) {
-            $actionsForms[] = $this->createForm(BotActionType::class, $actionBot)->createView();
-        }
-
-        return $this->render('default/configuration.html.twig', [
-            'actionsBot' => $actionsBot,
-            'forms' => $actionsForms
-        ]);
+        return $this->render('default/configuration.html.twig', []);
     }
 }
