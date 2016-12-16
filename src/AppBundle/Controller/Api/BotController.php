@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Api\Controller;
+namespace AppBundle\Controller\Api;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -14,17 +14,13 @@ class BotController extends Controller
      */
     public function getAllAction()
     {
-        $actionsBot = $this->getDoctrine()
-            ->getRepository('AppBundle\Bot\BotAction')
-            ->findAll()
-        ;
+        $actionsBot = $this->get('app.bot.repository')->findAll();
 
         return $this->json($actionsBot);
     }
 
     /**
      * @Route("/bot/{id}", name="api_actions_get")
-     * todo: use the Doctrine ParamConverter
      */
     public function getAction($id)
     {

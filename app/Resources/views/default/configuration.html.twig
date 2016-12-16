@@ -6,9 +6,8 @@
             <h1>Configuration of features</h1>
 
             <div id="app">
-                <actionsList
-                    v-bind:apiUrl="'{{ path('api_actions_all') }}'"
-                ></actionsList>
+                <list v-bind:url="'{{ path('api_actions_all') }}'"
+                ></list>
             </div>
         </div>
     </div>
@@ -16,6 +15,21 @@
 
 {% block javascripts %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.4/vue.js"></script>
-    <script src="{{ asset('js/vue-symfony-compat.js') }}"></script>
+    <script type="text/x-template" id="actionForm-template">
+    {% verbatim %}
+        <div>
+            <label>{{ action.name }}</label>
+            <input type="checkbox" id="checkbox" v-model="action.enabled">
+        </div>
+    {% endverbatim %}
+    </script>
+    <script type="text/x-template" id="list-template">
+        <div>
+            <form>
+                <action v-for="action in actions" v-bind:action="action"></action>
+                <button v-on:click="updateSettings">Save settings</button>
+            </form>
+        </div>
+    </script>
     <script src="{{ asset('js/configuration-page.js') }}"></script>
 {% endblock %}

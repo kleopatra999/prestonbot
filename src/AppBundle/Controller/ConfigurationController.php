@@ -6,7 +6,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use AppBundle\Bot\BotAction;
-use AppBundle\Bot\BotActionType;
 
 class ConfigurationController extends Controller
 {
